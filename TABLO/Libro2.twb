@@ -1,0 +1,1112 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20221.22.0324.2209                               -->
+<workbook original-version='18.1' source-build='2022.1.0 (20221.22.0324.2209)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelRelationshipPerfOptions.true...ObjectModelRelationshipPerfOptions />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)+ (DWH_DENUE)' inline='true' name='federated.1emkdpx0a89ni618roimv0m2u6kk' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='192.168.3.17' name='postgres.0kjz7au0uk69y71dju65g1gq2mgn'>
+            <connection authentication='username-password' class='postgres' dbname='DWH_DENUE' one-time-sql='' port='5432' server='192.168.3.17' username='postgres' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ACTIVIDAD' table='[DWH].[DM_ACTIVIDAD]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='FACT_ESTADISTICA' table='[DWH].[FACT_ESTADISTICA]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ANIO' table='[DWH].[DM_ANIO]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ESTABLECIMIENTO' table='[DWH].[DM_ESTABLECIMIENTO]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ACTIVIDAD' table='[DWH].[DM_ACTIVIDAD]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ZONA_GEOGRAFICA' table='[DWH].[DM_ZONA_GEOGRAFICA]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_LOCALIDAD' table='[DWH].[DM_LOCALIDAD]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_MUNICIPIO' table='[DWH].[DM_MUNICIPIO]' type='table' />
+          <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ENTIDAD' table='[DWH].[DM_ENTIDAD]' type='table' />
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[anio_desc]' value='[DM_ANIO].[anio_desc]' />
+          <map key='[anio_id]' value='[DM_ANIO].[anio_id]' />
+          <map key='[code_act]' value='[DM_ACTIVIDAD].[code_act]' />
+          <map key='[code_entidad]' value='[DM_ENTIDAD].[code_entidad]' />
+          <map key='[code_estab]' value='[DM_ESTABLECIMIENTO].[code_estab]' />
+          <map key='[code_localidad]' value='[DM_LOCALIDAD].[code_localidad]' />
+          <map key='[code_municipio]' value='[DM_MUNICIPIO].[code_municipio]' />
+          <map key='[code_zona_geografica]' value='[DM_ZONA_GEOGRAFICA].[code_zona_geografica]' />
+          <map key='[desc_entidad]' value='[DM_ENTIDAD].[desc_entidad]' />
+          <map key='[desc_localidad]' value='[DM_LOCALIDAD].[desc_localidad]' />
+          <map key='[desc_municipio]' value='[DM_MUNICIPIO].[desc_municipio]' />
+          <map key='[fecha_alta]' value='[DM_ESTABLECIMIENTO].[fecha_alta]' />
+          <map key='[id_act (DM_ACTIVIDAD)]' value='[DM_ACTIVIDAD].[id_act]' />
+          <map key='[id_act]' value='[DM_ESTABLECIMIENTO].[id_act]' />
+          <map key='[id_anio]' value='[FACT_ESTADISTICA].[id_anio]' />
+          <map key='[id_entidad (DM_ENTIDAD)]' value='[DM_ENTIDAD].[id_entidad]' />
+          <map key='[id_entidad]' value='[DM_MUNICIPIO].[id_entidad]' />
+          <map key='[id_est]' value='[FACT_ESTADISTICA].[id_est]' />
+          <map key='[id_estab]' value='[DM_ESTABLECIMIENTO].[id_estab]' />
+          <map key='[id_localidad (DM_LOCALIDAD)]' value='[DM_LOCALIDAD].[id_localidad]' />
+          <map key='[id_localidad]' value='[DM_ZONA_GEOGRAFICA].[id_localidad]' />
+          <map key='[id_municipio (DM_MUNICIPIO)]' value='[DM_MUNICIPIO].[id_municipio]' />
+          <map key='[id_municipio]' value='[DM_LOCALIDAD].[id_municipio]' />
+          <map key='[id_zona_geografica (DM_ZONA_GEOGRAFICA)]' value='[DM_ZONA_GEOGRAFICA].[id_zona_geografica]' />
+          <map key='[id_zona_geografica]' value='[FACT_ESTADISTICA].[id_zona_geografica]' />
+          <map key='[latitud]' value='[DM_ZONA_GEOGRAFICA].[latitud]' />
+          <map key='[longitud]' value='[DM_ZONA_GEOGRAFICA].[longitud]' />
+          <map key='[max_persona]' value='[FACT_ESTADISTICA].[max_persona]' />
+          <map key='[min_persona]' value='[FACT_ESTADISTICA].[min_persona]' />
+          <map key='[nom_estab]' value='[DM_ESTABLECIMIENTO].[nom_estab]' />
+          <map key='[nombre_act]' value='[DM_ACTIVIDAD].[nombre_act]' />
+          <map key='[raz_social]' value='[DM_ESTABLECIMIENTO].[raz_social]' />
+          <map key='[tipounieco]' value='[DM_ESTABLECIMIENTO].[tipounieco]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id_est</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_est]</local-name>
+            <parent-name>[FACT_ESTADISTICA]</parent-name>
+            <remote-alias>id_est</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_zona_geografica</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_zona_geografica]</local-name>
+            <parent-name>[FACT_ESTADISTICA]</parent-name>
+            <remote-alias>id_zona_geografica</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_anio</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_anio]</local-name>
+            <parent-name>[FACT_ESTADISTICA]</parent-name>
+            <remote-alias>id_anio</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>min_persona</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[min_persona]</local-name>
+            <parent-name>[FACT_ESTADISTICA]</parent-name>
+            <remote-alias>min_persona</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>max_persona</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[max_persona]</local-name>
+            <parent-name>[FACT_ESTADISTICA]</parent-name>
+            <remote-alias>max_persona</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>anio_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[anio_id]</local-name>
+            <parent-name>[DM_ANIO]</parent-name>
+            <remote-alias>anio_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ANIO (DWH.DM_ANIO)_A52472EEFD3E464AA23F2BF07416C9B2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>anio_desc</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[anio_desc]</local-name>
+            <parent-name>[DM_ANIO]</parent-name>
+            <remote-alias>anio_desc</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>30</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ANIO (DWH.DM_ANIO)_A52472EEFD3E464AA23F2BF07416C9B2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_estab</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_estab]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>id_estab</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_estab</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_estab]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>code_estab</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nom_estab</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nom_estab]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>nom_estab</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>250</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>raz_social</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[raz_social]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>raz_social</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>250</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tipounieco</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[tipounieco]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>tipounieco</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fecha_alta</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fecha_alta]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>fecha_alta</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_act</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_act]</local-name>
+            <parent-name>[DM_ESTABLECIMIENTO]</parent-name>
+            <remote-alias>id_act</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_act</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_act (DM_ACTIVIDAD)]</local-name>
+            <parent-name>[DM_ACTIVIDAD]</parent-name>
+            <remote-alias>id_act</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_act</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_act]</local-name>
+            <parent-name>[DM_ACTIVIDAD]</parent-name>
+            <remote-alias>code_act</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>6</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_act</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nombre_act]</local-name>
+            <parent-name>[DM_ACTIVIDAD]</parent-name>
+            <remote-alias>nombre_act</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>250</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_zona_geografica</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_zona_geografica (DM_ZONA_GEOGRAFICA)]</local-name>
+            <parent-name>[DM_ZONA_GEOGRAFICA]</parent-name>
+            <remote-alias>id_zona_geografica</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_zona_geografica</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_zona_geografica]</local-name>
+            <parent-name>[DM_ZONA_GEOGRAFICA]</parent-name>
+            <remote-alias>code_zona_geografica</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>latitud</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[latitud]</local-name>
+            <parent-name>[DM_ZONA_GEOGRAFICA]</parent-name>
+            <remote-alias>latitud</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>8</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>longitud</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[longitud]</local-name>
+            <parent-name>[DM_ZONA_GEOGRAFICA]</parent-name>
+            <remote-alias>longitud</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>8</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_localidad</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_localidad]</local-name>
+            <parent-name>[DM_ZONA_GEOGRAFICA]</parent-name>
+            <remote-alias>id_localidad</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_localidad</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_localidad (DM_LOCALIDAD)]</local-name>
+            <parent-name>[DM_LOCALIDAD]</parent-name>
+            <remote-alias>id_localidad</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_localidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_localidad]</local-name>
+            <parent-name>[DM_LOCALIDAD]</parent-name>
+            <remote-alias>code_localidad</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>desc_localidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[desc_localidad]</local-name>
+            <parent-name>[DM_LOCALIDAD]</parent-name>
+            <remote-alias>desc_localidad</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_municipio</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_municipio]</local-name>
+            <parent-name>[DM_LOCALIDAD]</parent-name>
+            <remote-alias>id_municipio</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_municipio</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_municipio (DM_MUNICIPIO)]</local-name>
+            <parent-name>[DM_MUNICIPIO]</parent-name>
+            <remote-alias>id_municipio</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_municipio</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_municipio]</local-name>
+            <parent-name>[DM_MUNICIPIO]</parent-name>
+            <remote-alias>code_municipio</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>desc_municipio</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[desc_municipio]</local-name>
+            <parent-name>[DM_MUNICIPIO]</parent-name>
+            <remote-alias>desc_municipio</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_entidad</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_entidad]</local-name>
+            <parent-name>[DM_MUNICIPIO]</parent-name>
+            <remote-alias>id_entidad</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id_entidad</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id_entidad (DM_ENTIDAD)]</local-name>
+            <parent-name>[DM_ENTIDAD]</parent-name>
+            <remote-alias>id_entidad</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_entidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_entidad]</local-name>
+            <parent-name>[DM_ENTIDAD]</parent-name>
+            <remote-alias>code_entidad</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>desc_entidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[desc_entidad]</local-name>
+            <parent-name>[DM_ENTIDAD]</parent-name>
+            <remote-alias>desc_entidad</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RMX' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='N°Establecimientos 2017' datatype='integer' name='[Calculation_1291407228827811843]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='count ([id_est])' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='DM_ACTIVIDAD' datatype='table' name='[__tableau_internal_object_id__].[DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_ANIO' datatype='table' name='[__tableau_internal_object_id__].[DM_ANIO (DWH.DM_ANIO)_A52472EEFD3E464AA23F2BF07416C9B2]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_ENTIDAD' datatype='table' name='[__tableau_internal_object_id__].[DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_ESTABLECIMIENTO' datatype='table' name='[__tableau_internal_object_id__].[DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_LOCALIDAD' datatype='table' name='[__tableau_internal_object_id__].[DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_MUNICIPIO' datatype='table' name='[__tableau_internal_object_id__].[DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='DM_ZONA_GEOGRAFICA' datatype='table' name='[__tableau_internal_object_id__].[DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='FACT_ESTADISTICA' datatype='table' name='[__tableau_internal_object_id__].[FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5]' role='measure' type='quantitative' />
+      <column caption='Anio Desc' datatype='string' name='[anio_desc]' role='dimension' type='nominal' />
+      <column caption='Anio Id' datatype='integer' name='[anio_id]' role='dimension' type='ordinal' />
+      <column caption='Code Act' datatype='string' name='[code_act]' role='dimension' type='nominal' />
+      <column caption='Code Entidad' datatype='string' name='[code_entidad]' role='dimension' type='nominal' />
+      <column caption='Code Estab' datatype='string' name='[code_estab]' role='dimension' type='nominal' />
+      <column caption='Code Localidad' datatype='string' name='[code_localidad]' role='dimension' type='nominal' />
+      <column caption='Code Municipio' datatype='string' name='[code_municipio]' role='dimension' type='nominal' />
+      <column caption='Code Zona Geografica' datatype='string' name='[code_zona_geografica]' role='dimension' type='nominal' />
+      <column caption='Desc Entidad' datatype='string' name='[desc_entidad]' role='dimension' type='nominal' />
+      <column caption='Desc Localidad' datatype='string' name='[desc_localidad]' role='dimension' type='nominal' />
+      <column caption='Desc Municipio' datatype='string' name='[desc_municipio]' role='dimension' type='nominal' />
+      <column caption='Fecha Alta' datatype='string' name='[fecha_alta]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='id act (DM ACTIVIDAD)' datatype='integer' name='[id_act (DM_ACTIVIDAD)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Id Act' datatype='integer' name='[id_act]' role='dimension' type='ordinal' />
+      <column caption='Id Anio' datatype='integer' name='[id_anio]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='id entidad (DM ENTIDAD)' datatype='integer' name='[id_entidad (DM_ENTIDAD)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Id Entidad' datatype='integer' name='[id_entidad]' role='dimension' type='ordinal' />
+      <column caption='Id Est' datatype='integer' name='[id_est]' role='dimension' type='ordinal' />
+      <column caption='Id Estab' datatype='integer' name='[id_estab]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='id localidad (DM LOCALIDAD)' datatype='integer' name='[id_localidad (DM_LOCALIDAD)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Id Localidad' datatype='integer' name='[id_localidad]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='id municipio (DM MUNICIPIO)' datatype='integer' name='[id_municipio (DM_MUNICIPIO)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Id Municipio' datatype='integer' name='[id_municipio]' role='dimension' type='ordinal' />
+      <column caption='id zona geografica (DM ZONA GEOGRAFICA)' datatype='integer' name='[id_zona_geografica (DM_ZONA_GEOGRAFICA)]' role='dimension' type='ordinal' />
+      <column caption='Id Zona Geografica' datatype='integer' name='[id_zona_geografica]' role='dimension' type='ordinal' />
+      <column caption='Latitud' datatype='real' name='[latitud]' role='measure' type='quantitative' />
+      <column caption='Longitud' datatype='real' name='[longitud]' role='measure' type='quantitative' />
+      <column caption='Max Persona' datatype='integer' name='[max_persona]' role='measure' type='quantitative' />
+      <column caption='Min Persona' datatype='integer' name='[min_persona]' role='measure' type='quantitative' />
+      <column caption='Nom Estab' datatype='string' name='[nom_estab]' role='dimension' type='nominal' />
+      <column caption='Nombre Act' datatype='string' name='[nombre_act]' role='dimension' type='nominal' />
+      <column caption='Raz Social' datatype='string' name='[raz_social]' role='dimension' type='nominal' />
+      <column caption='Tipounieco' datatype='string' name='[tipounieco]' role='dimension' type='nominal' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Estados Unidos Mexicanos&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='DM_ACTIVIDAD' id='DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ACTIVIDAD' table='[DWH].[DM_ACTIVIDAD]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_ANIO' id='DM_ANIO (DWH.DM_ANIO)_A52472EEFD3E464AA23F2BF07416C9B2'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ANIO' table='[DWH].[DM_ANIO]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_ENTIDAD' id='DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ENTIDAD' table='[DWH].[DM_ENTIDAD]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_ESTABLECIMIENTO' id='DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ESTABLECIMIENTO' table='[DWH].[DM_ESTABLECIMIENTO]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_LOCALIDAD' id='DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_LOCALIDAD' table='[DWH].[DM_LOCALIDAD]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_MUNICIPIO' id='DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_MUNICIPIO' table='[DWH].[DM_MUNICIPIO]' type='table' />
+            </properties>
+          </object>
+          <object caption='DM_ZONA_GEOGRAFICA' id='DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='DM_ZONA_GEOGRAFICA' table='[DWH].[DM_ZONA_GEOGRAFICA]' type='table' />
+            </properties>
+          </object>
+          <object caption='FACT_ESTADISTICA' id='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5'>
+            <properties context=''>
+              <relation connection='postgres.0kjz7au0uk69y71dju65g1gq2mgn' name='FACT_ESTADISTICA' table='[DWH].[FACT_ESTADISTICA]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_act]' />
+              <expression op='[id_act (DM_ACTIVIDAD)]' />
+            </expression>
+            <first-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-guaranteed-value='true' guaranteed-value='true' object-id='DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_ACTIVIDAD (DWH.DM_ACTIVIDAD)_316B1994B61B47D4B3EA89B247709EE8' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_anio]' />
+              <expression op='[anio_id]' />
+            </expression>
+            <first-end-point object-id='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_ANIO (DWH.DM_ANIO)_A52472EEFD3E464AA23F2BF07416C9B2' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_entidad]' />
+              <expression op='[id_entidad (DM_ENTIDAD)]' />
+            </expression>
+            <first-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-guaranteed-value='true' guaranteed-value='true' object-id='DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_ENTIDAD (DWH.DM_ENTIDAD)_9FA6BB22BC70463CBA8E7C2CDAFDCD09' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_est]' />
+              <expression op='[id_estab]' />
+            </expression>
+            <first-end-point object-id='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_ESTABLECIMIENTO (DWH.DM_ESTABLECIMIENTO)_68CE58A53DEC44698AF2EF5BAA0114B4' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_localidad]' />
+              <expression op='[id_localidad (DM_LOCALIDAD)]' />
+            </expression>
+            <first-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-guaranteed-value='true' guaranteed-value='true' object-id='DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_municipio]' />
+              <expression op='[id_municipio (DM_MUNICIPIO)]' />
+            </expression>
+            <first-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-guaranteed-value='true' guaranteed-value='true' object-id='DM_LOCALIDAD (DWH.DM_LOCALIDAD)_ED6CE3FE93C7427CAD65BFBAA8305353' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_MUNICIPIO (DWH.DM_MUNICIPIO)_0051FF6780CE4D5EBECD09F4E622C3A8' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[id_zona_geografica]' />
+              <expression op='[id_zona_geografica (DM_ZONA_GEOGRAFICA)]' />
+            </expression>
+            <first-end-point object-id='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)_311BCAA2008F4CD5B5945B1C9B322CB5' />
+            <second-end-point _.fcp.ObjectModelRelationshipPerfOptions.true...is-db-set-unique-key='true' object-id='DM_ZONA_GEOGRAFICA (DWH.DM_ZONA_GEOGRAFICA)_B3D62BC255F54DA5B6C22B34ECC081F9' unique-key='true' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Hoja 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)+ (DWH_DENUE)' name='federated.1emkdpx0a89ni618roimv0m2u6kk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1emkdpx0a89ni618roimv0m2u6kk'>
+            <column caption='N°Establecimientos 2017' datatype='integer' name='[Calculation_1291407228827811843]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='count ([id_est])' />
+            </column>
+            <column caption='Desc Entidad' datatype='string' name='[desc_entidad]' role='dimension' type='nominal' />
+            <column caption='Id Est' datatype='integer' name='[id_est]' role='dimension' type='ordinal' />
+            <column caption='Nombre Act' datatype='string' name='[nombre_act]' role='dimension' type='nominal' />
+            <column-instance column='[desc_entidad]' derivation='None' name='[none:desc_entidad:nk]' pivot='key' type='nominal' />
+            <column-instance column='[nombre_act]' derivation='None' name='[none:nombre_act:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_1291407228827811843]' derivation='User' name='[usr:Calculation_1291407228827811843:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:desc_entidad:nk]'>
+            <groupfilter function='level-members' level='[none:desc_entidad:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:desc_entidad:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' palette='red_blue_diverging_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' />
+              <color column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' />
+              <text column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:nombre_act:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{15495B84-BD67-4877-8674-479F95F02A66}' />
+    </worksheet>
+    <worksheet name='Hoja 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='FACT_ESTADISTICA (DWH.FACT_ESTADISTICA)+ (DWH_DENUE)' name='federated.1emkdpx0a89ni618roimv0m2u6kk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1emkdpx0a89ni618roimv0m2u6kk'>
+            <column caption='N°Establecimientos 2017' datatype='integer' name='[Calculation_1291407228827811843]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='count ([id_est])' />
+            </column>
+            <column caption='Id Est' datatype='integer' name='[id_est]' role='dimension' type='ordinal' />
+            <column caption='Id Estab' datatype='integer' name='[id_estab]' role='dimension' type='ordinal' />
+            <column caption='Latitud' datatype='real' name='[latitud]' role='measure' type='quantitative' />
+            <column-instance column='[id_estab]' derivation='None' name='[none:id_estab:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[latitud]' derivation='Sum' name='[sum:latitud:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1291407228827811843]' derivation='User' name='[usr:Calculation_1291407228827811843:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='stroke-color' id='refline0' value='#000000' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='div-level' scope='rows' value='10' />
+            <format attr='div-level' scope='cols' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' />
+            </encodings>
+            <reference-line axis-column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[sum:latitud:qk]' enable-instant-analytics='true' formula='average' id='refline0' label-type='none' probability='95' scope='per-cell' value-column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' z-order='2' />
+            <reference-line axis-column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[sum:latitud:qk]' enable-instant-analytics='true' fill-above='true' fill-below='true' formula='average' id='refline1' label-type='none' percentage-bands='true' probability='95' scope='per-cell' symmetric='false' value-column='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' z-order='1'>
+              <reference-line-value percentage='60' />
+              <reference-line-value percentage='80' />
+            </reference-line>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:id_estab:ok]</rows>
+        <cols>[federated.1emkdpx0a89ni618roimv0m2u6kk].[sum:latitud:qk]</cols>
+      </table>
+      <simple-id uuid='{A5030C0A-51E5-47BF-93CB-19A67219E8F7}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Hoja 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card param='[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:desc_entidad:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1emkdpx0a89ni618roimv0m2u6kk].[usr:Calculation_1291407228827811843:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:desc_entidad:nk]</field>
+            <field>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:nombre_act:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1EF8E97F-5848-42F3-9D56-12D8AA1B8155}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Hoja 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:fecha_alta:nk]</field>
+            <field>[federated.1emkdpx0a89ni618roimv0m2u6kk].[none:id_estab:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{EF828D1A-CD84-4106-AE44-9FD78E487A10}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Hoja 1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Hoja 2' width='192'>
+      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
+      KYkkfkoAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
