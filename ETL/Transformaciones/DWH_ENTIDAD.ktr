@@ -5,7 +5,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <directory>/DENUE/Transformaciones</directory>
+    <directory>/Transformaciones</directory>
     <parameters>
     </parameters>
     <log>
@@ -428,7 +428,7 @@
     <created_user>admin</created_user>
     <created_date>2022/05/18 11:07:10.121</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2022/05/18 20:30:53.641</modified_date>
+    <modified_date>2022/05/20 22:26:43.780</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -436,7 +436,7 @@
   </notepads>
   <connection>
     <name>denue</name>
-    <server>localhost</server>
+    <server>192.168.3.17</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>DWH_DENUE</database>
@@ -504,7 +504,7 @@
       <schema_name/>
     </partitioning>
     <connection>denue</connection>
-    <commit>100</commit>
+    <commit>1000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>"DWH"</schema>
@@ -557,7 +557,7 @@
 			,upper(entidad) entidad
 			
 FROM "SA".tmp_zona_geografica
-ORDER BY 1
+ORDER BY 2
 </sql>
     <limit>0</limit>
     <lookup/>

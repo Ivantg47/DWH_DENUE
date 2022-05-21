@@ -5,8 +5,14 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <directory>/DENUE/Transformaciones</directory>
+    <trans_status>0</trans_status>
+    <directory>/Transformaciones</directory>
     <parameters>
+      <parameter>
+        <name>anio</name>
+        <default_value/>
+        <description>año de csv</description>
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -428,7 +434,7 @@
     <created_user>admin</created_user>
     <created_date>2022/05/18 11:07:11.086</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2022/05/18 22:04:35.360</modified_date>
+    <modified_date>2022/05/20 21:52:23.474</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -436,7 +442,7 @@
   </notepads>
   <connection>
     <name>denue</name>
-    <server>localhost</server>
+    <server>192.168.3.17</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>DWH_DENUE</database>
@@ -501,9 +507,9 @@
     <connection>denue</connection>
     <execute_each_row>N</execute_each_row>
     <single_statement>N</single_statement>
-    <replace_variables>N</replace_variables>
+    <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>SELECT "SA".sp_fact_estadistica(2020);</sql>
+    <sql>SELECT "SA".sp_fact_estadistica(${anio});</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
