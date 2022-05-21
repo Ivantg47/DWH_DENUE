@@ -830,3 +830,38 @@ CREATE TABLE "PART"."LOCALIDAD_05" PARTITION OF "DWH"."DM_LOCALIDAD"
         
         SELECT distinct localidad, municipio , cve_mun , entidad 
         FROM "SA".tmp_zona_geografica tzg where  tzg.cve_loc=1 order by 1
+
+
+            select count(*)  from (          
+        select  tzg.id_zona_geografica --cast(tzg.id_zona_geografica as varchar) id_zona_geografica, 
+            latitud, 
+            longitud, 
+            id_localidad
+            ,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
+            from "SA".tmp_zona_geografica tzg 
+                join "DWH"."DM_LOCALIDAD" dl    
+                    on (cast(tzg.cve_loc as varchar) = dl.code_localidad and dl.desc_localidad = upper(tzg.localidad))
+                        join "DWH"."DM_MUNICIPIO" dm 
+                            on (dm.code_municipio = cast(tzg.cve_mun as varchar) and dm.id_municipio  = dl.id_municipio)
+                              join "DWH"."DM_ENTIDAD" de 
+                                on de.code_entidad  = cast(tzg.cve_ent as varchar) and dm.id_entidad = de.id_entidad
+                                order by 1
+                                ) as dddd
+                                
+    select count(*)  from (          
+        select  *
+            from "DWH"."DM_ZONA_GEOGRAFICA" g --order by 1 desc
+            right join (        select  cast(tzg.id_zona_geografica as varchar) id_zona_geografica, 
+            latitud, 
+            longitud, 
+            id_localidad
+            ,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
+            from "SA".tmp_zona_geografica tzg 
+                join "DWH"."DM_LOCALIDAD" dl    
+                    on (cast(tzg.cve_loc as varchar) = dl.code_localidad and dl.desc_localidad = upper(tzg.localidad))
+                        join "DWH"."DM_MUNICIPIO" dm 
+                            on (dm.code_municipio = cast(tzg.cve_mun as varchar) and dm.id_municipio  = dl.id_municipio)
+                              join "DWH"."DM_ENTIDAD" de 
+                                on de.code_entidad  = cast(tzg.cve_ent as varchar) and dm.id_entidad = de.id_entidad
+                                order by 4, 1) as hh on hh.id_zona_geografica = g.code_zona_geografica where g.id_zona_geografica = null order by 5 desc 
+                                ) as dddd           
