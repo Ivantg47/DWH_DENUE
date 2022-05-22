@@ -784,5 +784,26 @@ CREATE TABLE "PART"."tmp_ESTABLECIMIENTO_19" PARTITION OF "SA".TMP_ESTABLECIMIEN
 CREATE TABLE "PART"."tmp_ESTABLECIMIENTO_20" PARTITION OF "SA".TMP_ESTABLECIMIENTO
     FOR VALUES FROM (9500000) TO (10000000);
 
+
+--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>--
+--<<<<<<<<<<<<<<<<<<<Procedimiento limpieza de tablas>>>>>>>>>>>>>>>>>>>>--
+--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>--
+CREATE OR REPLACE FUNCTION "SA".sp_limpiar()
+ RETURNS character
+ LANGUAGE plpgsql
+AS $function$   
+  BEGIN
+
+---------------------------------------------------------------------------------------------
+-------------------------------------Vacian las tablas tmp-----------------------------------
+---------------------------------------------------------------------------------------------
+delete from "SA".tmp_establecimiento;
+delete from "SA".tmp_estaditica;
+delete from "SA".tmp_zona_geografica ;
+
+return 'ok';   
+END;
+$function$
+;
  ------------------------------------------------------------------------------------------- 
-kitchen.bat /file:F:\unam\BD\DWH_DENUE\ETL\JOBS\CargaDatos2021.kjb /level:basic
+--kitchen.bat /rep:DENUE /dir:/JOBS/ /job:CargaDatos2021 /level:basic
