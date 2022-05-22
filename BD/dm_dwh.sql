@@ -397,19 +397,26 @@ AS $function$
 ---------------------------------------------------------------------------------------------
 CREATE TEMPORARY table TMP_ZONA AS 
 (
-
-    SELECT  CAST(tzg.id_zona_geografica as varchar) id_zona_geografica, 
-        latitud, 
-        longitud, 
-        dl.id_localidad
-        FROM "SA".tmp_zona_geografica tzg 
-            JOIN "DWH"."DM_LOCALIDAD" dl    
-                ON (cast(tzg.cve_loc as varchar) = dl.code_localidad AND dl.desc_localidad = UPPER(tzg.localidad))
-                    JOIN "DWH"."DM_MUNICIPIO" dm 
-                        ON (dm.code_municipio = cast(tzg.cve_mun as varchar) AND dm.id_municipio  = dl.id_municipio)
-                            JOIN "DWH"."DM_ENTIDAD" de 
-                                ON (de.code_entidad  = cast(tzg.cve_ent as varchar) AND dm.id_entidad = de.id_entidad) 
-                                    ORDER BY 4
+    SELECT tmp.id_zona_geografica, 
+        tmp.latitud, 
+        tmp.longitud, 
+        tmp.id_localidad
+    FROM "DWH"."DM_ZONA_GEOGRAFICA" g --order by 1 desc
+        RIGHT JOIN (SELECT cast(tzg.id_zona_geografica AS VARCHAR)  id_zona_geografica, 
+                    latitud, 
+                    longitud, 
+                    id_localidad
+                    --,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
+                    FROM "SA".tmp_zona_geografica tzg 
+                        JOIN "DWH"."DM_LOCALIDAD" dl    
+                            ON (CAST(tzg.cve_loc AS VARCHAR) = dl.code_localidad AND dl.desc_localidad = UPPER(tzg.localidad))
+                                JOIN "DWH"."DM_MUNICIPIO" dm 
+                                    ON (dm.code_municipio = cast(tzg.cve_mun AS VARCHAR) AND dm.id_municipio  = dl.id_municipio)
+                                      JOIN "DWH"."DM_ENTIDAD" de 
+                                        ON de.code_entidad  = cast(tzg.cve_ent AS VARCHAR) AND dm.id_entidad = de.id_entidad
+                                            ORDER BY 4, 1) 
+                            AS tmp ON tmp.id_zona_geografica = g.code_zona_geografica
+                                WHERE g.id_zona_geografica IS NULL 
 );  
      
 ------------------------------------------------------
@@ -444,6 +451,8 @@ CREATE OR REPLACE FUNCTION "SA".sp_fact_estadistica(fecha integer)
 AS $function$   
   BEGIN
 
+DELETE FROM "DWH"."FACT_ESTADISTICA"
+    WHERE ID_ANIO = fecha;
 ---------------------------------------------------------------------------------------------
 -----------------------------Se crea tabla temporal TMP_FACT_ESTADISTICA---------------------
 ---------------------------------------------------------------------------------------------
@@ -485,7 +494,7 @@ SELECT ID_ESTAB,
    ID_FECHA,
    MIN_PERSONA,
    MAX_PERSONA
-FROM TMP_FACT_ESTADISTICA;
+FROM TMP_FACT_ESTADISTICA ON CONFLICT DO NOTHING;
       
     DROP TABLE TMP_FACT_ESTADISTICA;--elimina la temporal TMP_FACT_ESTADISTICA
 RETURN 'ok';   
@@ -568,16 +577,24 @@ AS $function$
 ---------------------------------------------------------------------------------------------
 CREATE TEMPORARY table TMP_LOCALIDAD AS 
 (
-    SELECT DISTINCT CAST(tzg.cve_loc as VARCHAR) CODE_LOCALIDAD
-        ,UPPER(localidad) localidad
-        ,ID_MUNICIPIO 
-        FROM "SA".tmp_zona_geografica tzg 
-          JOIN "DWH"."DM_MUNICIPIO" dm 
-            ON dm.code_municipio  = CAST(tzg.cve_mun AS VARCHAR)
-                JOIN "DWH"."DM_ENTIDAD" de 
-                    ON de.code_entidad  = cast(tzg.cve_ent as varchar) and dm.id_entidad = de.id_entidad 
-                ORDER BY 3,2
-              
+    SELECT  tmp.CODE_ESTAB 
+            ,tmp.NOM_ESTAB
+            ,tmp.RAZ_SOCIAL
+            ,tmp.FECHA_ALTA
+            ,tmp.TIPOUNIECO
+            ,tmp.ID_ACT
+    FROM "DWH"."DM_ESTABLECIMIENTO" de
+        RIGHT JOIN (SELECT CAST(id_est as VARCHAR) CODE_ESTAB
+                    ,NOM_ESTAB
+                    ,RAZ_SOCIAL
+                    ,CAST(SUBSTRING(fecha_alta, '[0-9]{1,4}') || SUBSTRING(SUBSTRING(fecha_alta, 5, 5), '[0-9]{1,3}')AS INT) FECHA_ALTA
+                    ,TIPOUNIECO
+                    ,ID_ACT
+                    FROM "SA".tmp_establecimiento e
+                        JOIN "DWH"."DM_ACTIVIDAD" a
+                            ON a.CODE_ACT = CAST(e.codigo_act AS VARCHAR)
+                    ) AS tmp ON de.CODE_ESTAB = tmp.CODE_ESTAB  
+                        WHERE de.id_estab IS NULL
 );  
 
 ----------------------------------------------------------------------------------
@@ -768,100 +785,4 @@ CREATE TABLE "PART"."tmp_ESTABLECIMIENTO_20" PARTITION OF "SA".TMP_ESTABLECIMIEN
     FOR VALUES FROM (9500000) TO (10000000);
 
  ------------------------------------------------------------------------------------------- 
-
-CREATE TABLE "SA".TMP_ZONA_GEOGRAFICA_5(id_zona_geografica BIGINT, cve_ent BIGINT, entidad VARCHAR(200), cve_mun BIGINT, municipio VARCHAR(200), cve_loc BIGINT, localidad VARCHAR(200), latitud NUMERIC(21, 8), longitud NUMERIC(21, 8));
-CREATE TABLE "SA".tmp_estaditica_5(id_est BIGINT, id_zona BIGINT, id_anio INT, per_ocu VARCHAR(20));
-CREATE TABLE "SA".TMP_ESTABLECIMIENTO_5(id_est BIGINT, nom_estab VARCHAR(300), raz_social VARCHAR(300), codigo_act BIGINT, nombre_act VARCHAR(300), tipounieco VARCHAR(8), fecha_alta VARCHAR(7));
-
-
-select * from "DWH"."DM_MES" dm 
-
-select * from "DWH"."DM_ACTIVIDAD" da ;
-select * from "DWH"."DM_ESTABLECIMIENTO" de ;
-select * from "DWH"."DM_LOCALIDAD" dl ;
-select * from "DWH"."DM_ENTIDAD" de ;
-
-ALTER SEQUENCE "DWH"."DM_LOCALIDAD_id_localidad_seq"
-    RESTART 2;
-
-
-CREATE TABLE "PART"."LOCALIDAD_04" PARTITION OF "DWH"."DM_LOCALIDAD" 
-    FOR VALUES FROM (150000) TO (200000); 
-CREATE TABLE "PART"."LOCALIDAD_05" PARTITION OF "DWH"."DM_LOCALIDAD" 
-    FOR VALUES FROM (200000) TO (250000); 
-    
-   
-       SELECT CAST(tzg.cve_loc as VARCHAR) CODE_LOCALIDAD
-        ,localidad
-        ,ID_MUNICIPIO
-        FROM "SA".tmp_zona_geografica tzg 
-          JOIN "DWH"."DM_MUNICIPIO" dm 
-            ON dm.code_municipio  = CAST(tzg.cve_mun AS VARCHAR)
-                JOIN "DWH"."DM_ENTIDAD" de
-                    ON dm.id_entidad  = de.id_entidad 
-                    
-    select distinct COUNT(*)
-        FROM "SA".tmp_zona_geografica tzg 
-          JOIN "DWH"."DM_MUNICIPIO" dm 
-            ON dm.code_municipio  = CAST(tzg.cve_mun AS VARCHAR)
-                JOIN "DWH"."DM_ENTIDAD" de
-                    ON de.code_entidad  = CAST(tzg.cve_ent  AS VARCHAR) and de.id_entidad = dm.id_entidad 
-                    
-   SELECT COUNT(*) from "DWH"."DM_MUNICIPIO" dm ;       
-   SELECT * from "DWH"."DM_MUNICIPIO" dm ;      
-                        
-    SELECT COUNT(*)
-        FROM  "DWH"."DM_MUNICIPIO" dm 
-                JOIN "DWH"."DM_ENTIDAD" de
-                    ON dm.id_entidad  = de.id_entidad 
-                    
-        SELECT desc_entidad,  COUNT(*)
-        FROM  "DWH"."DM_MUNICIPIO" dm 
-                JOIN "DWH"."DM_ENTIDAD" de
-                    ON dm.id_entidad  = de.id_entidad group by desc_entidad order by 1
-                    
-                        SELECT *
-        FROM "SA".tmp_zona_geografica tzg 
-          JOIN "DWH"."DM_MUNICIPIO" dm 
-            ON dm.code_municipio  = CAST(tzg.cve_mun AS VARCHAR)
-            
-       SELECT COUNT(*) from(      SELECT tzg.cve_loc, COUNT(*)
-        FROM "SA".tmp_zona_geografica tzg group by tzg.cve_loc ) as ddd
-        
-        SELECT distinct localidad, municipio , cve_mun , entidad 
-        FROM "SA".tmp_zona_geografica tzg where  tzg.cve_loc=1 order by 1
-
-
-            select count(*)  from (          
-        select  tzg.id_zona_geografica --cast(tzg.id_zona_geografica as varchar) id_zona_geografica, 
-            latitud, 
-            longitud, 
-            id_localidad
-            ,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
-            from "SA".tmp_zona_geografica tzg 
-                join "DWH"."DM_LOCALIDAD" dl    
-                    on (cast(tzg.cve_loc as varchar) = dl.code_localidad and dl.desc_localidad = upper(tzg.localidad))
-                        join "DWH"."DM_MUNICIPIO" dm 
-                            on (dm.code_municipio = cast(tzg.cve_mun as varchar) and dm.id_municipio  = dl.id_municipio)
-                              join "DWH"."DM_ENTIDAD" de 
-                                on de.code_entidad  = cast(tzg.cve_ent as varchar) and dm.id_entidad = de.id_entidad
-                                order by 1
-                                ) as dddd
-                                
-    select count(*)  from (          
-        select  *
-            from "DWH"."DM_ZONA_GEOGRAFICA" g --order by 1 desc
-            right join (        select  cast(tzg.id_zona_geografica as varchar) id_zona_geografica, 
-            latitud, 
-            longitud, 
-            id_localidad
-            ,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
-            from "SA".tmp_zona_geografica tzg 
-                join "DWH"."DM_LOCALIDAD" dl    
-                    on (cast(tzg.cve_loc as varchar) = dl.code_localidad and dl.desc_localidad = upper(tzg.localidad))
-                        join "DWH"."DM_MUNICIPIO" dm 
-                            on (dm.code_municipio = cast(tzg.cve_mun as varchar) and dm.id_municipio  = dl.id_municipio)
-                              join "DWH"."DM_ENTIDAD" de 
-                                on de.code_entidad  = cast(tzg.cve_ent as varchar) and dm.id_entidad = de.id_entidad
-                                order by 4, 1) as hh on hh.id_zona_geografica = g.code_zona_geografica where g.id_zona_geografica = null order by 5 desc 
-                                ) as dddd           
+kitchen.bat /file:F:\unam\BD\DWH_DENUE\ETL\JOBS\CargaDatos2021.kjb /level:basic
