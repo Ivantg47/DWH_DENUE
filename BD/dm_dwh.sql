@@ -807,3 +807,10 @@ $function$
 ;
  ------------------------------------------------------------------------------------------- 
 --kitchen.bat /rep:DENUE /dir:/JOBS/ /job:CargaDatos2021 /level:basic
+
+alter table "DWH"."FACT_ESTADISTICA" add column unidad_economica int;
+select * from "DWH"."FACT_ESTADISTICA";
+update "DWH"."FACT_ESTADISTICA" fe set unidad_economica = ddd.unidad_economica FROM
+(select id_anio, id_zona_geografica, id_est , min_persona , max_persona , count(*) unidad_economica  
+from "DWH"."FACT_ESTADISTICA" group by id_anio, id_zona_geografica, id_est , min_persona , max_persona)
+as ddd where ddd.id_anio = fe.id_anio and ddd.id_zona_geografica = fe.id_zona_geografica and ddd.id_est = fe.id_est;
