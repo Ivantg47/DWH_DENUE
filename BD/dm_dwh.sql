@@ -198,7 +198,7 @@ CREATE TABLE "DWH"."FACT_ESTADISTICA"
     ,MIN_PERSONA INT 
     ,MAX_PERSONA INT
     --,CONSTRAINT PK_FACT_ESTADISTICA PRIMARY KEY (ID_ANIO, ID_ZONA_GEOGRAFICA, ID_EST)
-)PARTITION BY RANGE (ID_ZONA_GEOGRAFICA);
+)PARTITION BY RANGE (ID_EST);
 
 -------------------------------------------------
 --------------------SE CREAN TABLAS HIJAS--------
@@ -388,26 +388,26 @@ AS $function$
 ---------------------------------------------------------------------------------------------
 CREATE TEMPORARY table TMP_ZONA AS 
 (
-    SELECT tmp.id_zona_geografica, 
+    SELECT tmp.id_zona, 
         tmp.latitud, 
         tmp.longitud, 
-        tmp.id_localidad
-    FROM "DWH"."DM_ZONA_GEOGRAFICA" g --order by 1 desc
-        RIGHT JOIN (SELECT cast(tzg.id_zona_geografica AS VARCHAR)  id_zona_geografica, 
-                    latitud, 
-                    longitud, 
-                    id_localidad
-                    --,tzg.cve_loc, tzg.cve_mun, tzg.cve_ent
-                    FROM "SA".tmp_zona_geografica tzg 
-                        JOIN "DWH"."DM_LOCALIDAD" dl    
-                            ON (CAST(tzg.cve_loc AS VARCHAR) = dl.code_localidad AND dl.desc_localidad = UPPER(tzg.localidad))
-                                JOIN "DWH"."DM_MUNICIPIO" dm 
-                                    ON (dm.code_municipio = cast(tzg.cve_mun AS VARCHAR) AND dm.id_municipio  = dl.id_municipio)
-                                      JOIN "DWH"."DM_ENTIDAD" de 
-                                        ON de.code_entidad  = cast(tzg.cve_ent AS VARCHAR) AND dm.id_entidad = de.id_entidad
-                                            ORDER BY 4, 1) 
-                            AS tmp ON tmp.id_zona_geografica = g.code_zona_geografica
-                                WHERE g.id_zona_geografica IS NULL 
+        tmp.id_localidad  
+    FROM "DWH"."DM_ZONA_GEOGRAFICA" g 
+            RIGHT JOIN (select cast(tzg.id_zona_geografica as varchar) id_zona
+            ,tzg.latitud 
+            ,tzg.longitud 
+            ,dl.id_localidad
+            from "SA".tmp_establecimiento te 
+            inner join "SA".tmp_zona_geografica tzg  
+            on tzg.id_zona_geografica = te.id_est
+                right  join "DWH"."DM_LOCALIDAD" dl 
+                    on dl.desc_localidad = upper(tzg.localidad) and cast(tzg.cve_loc as varchar) = dl.code_localidad
+                    join "DWH"."DM_MUNICIPIO" dm 
+                        on dm.code_municipio  = cast(tzg.cve_mun as varchar) and dl.id_municipio = dm.id_municipio
+                            order by dm.id_municipio) 
+                            AS tmp 
+                            ON tmp.id_zona = g.code_zona_geografica
+                            WHERE g.id_zona_geografica IS NULL 
 );  
      
 ------------------------------------------------------
@@ -568,24 +568,23 @@ AS $function$
 ---------------------------------------------------------------------------------------------
 CREATE TEMPORARY table TMP_LOCALIDAD AS 
 (
-    SELECT  tmp.CODE_ESTAB 
-            ,tmp.NOM_ESTAB
-            ,tmp.RAZ_SOCIAL
-            ,tmp.FECHA_ALTA
-            ,tmp.TIPOUNIECO
-            ,tmp.ID_ACT
-    FROM "DWH"."DM_ESTABLECIMIENTO" de
-        RIGHT JOIN (SELECT CAST(id_est as VARCHAR) CODE_ESTAB
-                    ,NOM_ESTAB
-                    ,RAZ_SOCIAL
-                    ,CAST(SUBSTRING(fecha_alta, '[0-9]{1,4}') || SUBSTRING(SUBSTRING(fecha_alta, 5, 5), '[0-9]{1,3}')AS INT) FECHA_ALTA
-                    ,TIPOUNIECO
-                    ,ID_ACT
-                    FROM "SA".tmp_establecimiento e
-                        JOIN "DWH"."DM_ACTIVIDAD" a
-                            ON a.CODE_ACT = CAST(e.codigo_act AS VARCHAR)
-                    ) AS tmp ON de.CODE_ESTAB = tmp.CODE_ESTAB  
-                        WHERE de.id_estab IS NULL
+    SELECT  tmp.CODE_LOCALIDAD 
+            ,tmp.localidad
+            ,tmp.ID_MUNICIPIO
+    FROM "DWH"."DM_LOCALIDAD" dl
+        RIGHT JOIN (SELECT DISTINCT CAST(tzg.cve_loc AS VARCHAR) CODE_LOCALIDAD
+                        ,UPPER(localidad) localidad
+                        ,ID_MUNICIPIO 
+                        FROM "SA".tmp_zona_geografica tzg 
+                          JOIN "DWH"."DM_MUNICIPIO" dm 
+                            ON dm.code_municipio  = CAST(tzg.cve_mun AS VARCHAR)
+                                JOIN "DWH"."DM_ENTIDAD" de 
+                                    ON de.code_entidad  = cast(tzg.cve_ent AS VARCHAR) AND dm.id_entidad = de.id_entidad
+                                ORDER BY 3,2
+                    ) AS tmp ON dl.CODE_LOCALIDAD = tmp.CODE_LOCALIDAD and  dl.desc_localidad = tmp.localidad
+                        WHERE dl.id_localidad IS NULL 
+                        ORDER BY 3 desc
+              
 );  
 
 ----------------------------------------------------------------------------------
@@ -805,3 +804,75 @@ update "DWH"."FACT_ESTADISTICA" fe set unidad_economica = ddd.unidad_economica F
 (select id_anio, id_zona_geografica, id_est , min_persona , max_persona , count(*) unidad_economica  
 from "DWH"."FACT_ESTADISTICA" group by id_anio, id_zona_geografica, id_est , min_persona , max_persona)
 as ddd where ddd.id_anio = fe.id_anio and ddd.id_zona_geografica = fe.id_zona_geografica and ddd.id_est = fe.id_est;
+
+
+CREATE OR REPLACE VIEW "DWH".vista_bar_motel
+AS SELECT x.desc_municipio,
+    COALESCE(x.bares, 0::bigint) AS bares,
+    COALESCE(y.moteles, 0::bigint) AS moteles
+   FROM ( SELECT f.desc_municipio,
+            f.id_municipio,
+                CASE
+                    WHEN c.id_act = 7 THEN sum(a.unidad_economica)
+                    ELSE NULL::bigint
+                END AS bares
+           FROM "DWH"."FACT_ESTADISTICA" a
+             JOIN "DWH"."DM_ESTABLECIMIENTO" b ON a.id_est = b.id_estab
+             JOIN "DWH"."DM_ACTIVIDAD" c ON b.id_act = c.id_act
+             JOIN "DWH"."DM_ZONA_GEOGRAFICA" d ON a.id_zona_geografica = d.id_zona_geografica
+             JOIN "DWH"."DM_LOCALIDAD" e ON d.id_localidad = e.id_localidad
+             JOIN "DWH"."DM_MUNICIPIO" f ON e.id_municipio = f.id_municipio
+          WHERE c.id_act = 7
+          GROUP BY f.desc_municipio, c.id_act, f.id_municipio) x
+     JOIN ( SELECT f.desc_municipio,
+            f.id_municipio,
+                CASE
+                    WHEN c.id_act = 18 THEN sum(a.unidad_economica)
+                    ELSE NULL::bigint
+                END AS moteles
+           FROM "DWH"."FACT_ESTADISTICA" a
+             JOIN "DWH"."DM_ESTABLECIMIENTO" b ON a.id_est = b.id_estab
+             JOIN "DWH"."DM_ACTIVIDAD" c ON b.id_act = c.id_act
+             JOIN "DWH"."DM_ZONA_GEOGRAFICA" d ON a.id_zona_geografica = d.id_zona_geografica
+             JOIN "DWH"."DM_LOCALIDAD" e ON d.id_localidad = e.id_localidad
+             JOIN "DWH"."DM_MUNICIPIO" f ON e.id_municipio = f.id_municipio
+          WHERE c.id_act = 18
+          GROUP BY f.desc_municipio, c.id_act, f.id_municipio) y ON x.id_municipio = y.id_municipio;
+
+
+
+CREATE OR REPLACE VIEW "DWH".vista_bar_motel_estado
+AS SELECT x.desc_entidad,
+    COALESCE(x.bares, 0::bigint) AS bares,
+    COALESCE(y.moteles, 0::bigint) AS moteles
+   FROM ( SELECT g.desc_entidad,
+            g.id_entidad,
+                CASE
+                    WHEN c.id_act = 7 THEN sum(a.unidad_economica)
+                    ELSE NULL::integer::bigint
+                END AS bares
+           FROM "DWH"."FACT_ESTADISTICA" a
+             JOIN "DWH"."DM_ESTABLECIMIENTO" b ON a.id_est = b.id_estab
+             JOIN "DWH"."DM_ACTIVIDAD" c ON b.id_act = c.id_act
+             JOIN "DWH"."DM_ZONA_GEOGRAFICA" d ON a.id_zona_geografica = d.id_zona_geografica
+             JOIN "DWH"."DM_LOCALIDAD" e ON d.id_localidad = e.id_localidad
+             JOIN "DWH"."DM_MUNICIPIO" f ON e.id_municipio = f.id_municipio
+             JOIN "DWH"."DM_ENTIDAD" g ON g.id_entidad = f.id_entidad
+          WHERE c.id_act = 7
+          GROUP BY g.desc_entidad, c.id_act, g.id_entidad) x
+     JOIN ( SELECT g.desc_entidad,
+            g.id_entidad,
+                CASE
+                    WHEN c.id_act = 18 THEN sum(a.unidad_economica)
+                    ELSE NULL::integer::bigint
+                END AS moteles
+           FROM "DWH"."FACT_ESTADISTICA" a
+             JOIN "DWH"."DM_ESTABLECIMIENTO" b ON a.id_est = b.id_estab
+             JOIN "DWH"."DM_ACTIVIDAD" c ON b.id_act = c.id_act
+             JOIN "DWH"."DM_ZONA_GEOGRAFICA" d ON a.id_zona_geografica = d.id_zona_geografica
+             JOIN "DWH"."DM_LOCALIDAD" e ON d.id_localidad = e.id_localidad
+             JOIN "DWH"."DM_MUNICIPIO" f ON e.id_municipio = f.id_municipio
+             JOIN "DWH"."DM_ENTIDAD" g ON g.id_entidad = f.id_entidad
+          WHERE c.id_act = 18
+          GROUP BY g.desc_entidad, c.id_act, g.id_entidad) y ON x.id_entidad = y.id_entidad;
+
